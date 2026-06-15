@@ -28,8 +28,7 @@ export function attachWebSocketServer(server) {
 
     wss.on("connection", async (socket,req) => {
 
-        if(wsArcjet)
-        {
+        
             try {
                 const decision=await wsArcjet.protect(req);
 
@@ -45,11 +44,11 @@ export function attachWebSocketServer(server) {
 
                 }
             } catch (error) {
-                console.error('Ws Connection Error',e);
+                console.error('Ws Connection Error', error);
                 socket.close(1011,'Server Security is invalid')
                 return;
             }
-        }
+        
         socket.isAlive=true;
 
         socket.on('pong',()=>{socket.isAlive=true;});
