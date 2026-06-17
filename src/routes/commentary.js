@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { matchIdParamSchema } from "../validation/matches.js";
-import { createCommentarySchema, listCommentaryQuerySchema } from "../validation/commentary.js";
+import {
+    createCommentarySchema,
+    listCommentaryQuerySchema,
+} from "../validation/commentary.js";
 import { db } from "../db/db.js";
 import { commentary } from "../db/schema.js";
 
@@ -8,11 +11,9 @@ import { eq, desc } from "drizzle-orm";
 
 const MAX_LIMIT = 100;
 
-
 export const commentaryRouter = Router({
     mergeParams: true,
 });
-
 
 commentaryRouter.get("/", async (req, res) => {
     const paramsResult = matchIdParamSchema.safeParse(req.params);
@@ -89,6 +90,7 @@ commentaryRouter.post("/", async (req, res) => {
             .returning();
 
         if (res.app.locals.broadcastCommentary) {
+            console.log("CALLING BROADCAST");
             res.app.locals.broadcastCommentary(result.matchId, result);
         }
 
