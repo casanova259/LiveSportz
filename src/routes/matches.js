@@ -2,7 +2,7 @@ import { Router } from "express";
 import { createMatchSchema, listMatchesQuerySchema } from "../validation/matches.js";
 import { db } from "../db/db.js"
 import { matches } from "../db/schema.js"
-import { desc } from "drizzle-orm";
+import { desc,eq } from "drizzle-orm";
 
 export const matchRouter = Router();
 
