@@ -44,7 +44,9 @@ async function loadSeedData() {
 }
 
 async function fetchMatches(limit = 100) {
-  const response = await fetch(`${API_URL}/matches?limit=${limit}`);
+  const response = await fetch(`${API_URL}/matches?limit=${limit}`, {
+    signal: AbortSignal.timeout(30000),
+  });
   if (!response.ok) {
     throw new Error(`Failed to fetch matches: ${response.status}`);
   }
@@ -127,10 +129,9 @@ async function createMatch(seedMatch) {
   }
   const responsePayload = await response.json();
 
-console.log("CREATE MATCH RESPONSE =", responsePayload);
 
   return responsePayload;
-} 
+}
 
 async function insertCommentary(matchId, entry) {
   const payload = {
