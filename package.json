@@ -9,7 +9,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "demo": "node src/index.js",
-    "seed":"node src/seed/seed.js "
+    "seed": "node src/seed/seed.js "
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@arcjet/inspect": "^1.5.0",
     "@arcjet/node": "^1.5.0",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "express": "^5.2.1",
