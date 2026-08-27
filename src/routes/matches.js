@@ -111,7 +111,7 @@ matchRouter.patch("/:id/score", async (req, res) => {
         if (req.app.locals.broadcastMatchUpdated) {
             req.app.locals.broadcastMatchUpdated(updated);
         }
-
+  
         return res.status(200).json({
             data: updated,
         });
